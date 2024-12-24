@@ -74,7 +74,7 @@ function Files({ subject, setSelectedSubject }) {
           <p>No files available.</p>
         )}
       </div>
-      <div className="file-upload">
+      <div className="file-upload"> 
         <input
           type="file"
           className="file-input"
@@ -84,7 +84,7 @@ function Files({ subject, setSelectedSubject }) {
           Upload File
         </button>
       </div>
-      <div style={{textAlign:"center"}}>(Only Allowed types are JPEG, PNG, PDF, DOC, DOCX.)</div>
+      <div style={{textAlign:"center",marginBottom:"80px"}}>(Only Allowed types are JPEG, PNG, PDF, DOC, DOCX.)</div>
     </div>
   );
 }

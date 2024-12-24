@@ -18,6 +18,14 @@ body {
 }
 .app-content{
   font-family: "Ubuntu", serif;
+  margin-bottom: 90px;
+}
+.app-para{
+  background: linear-gradient(to right, #9887a8, #0f29bc, #a1ff1e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Playwrite GB S", serif;
+  margin-bottom: 10px;
 }
 .container {
     max-width: 1200px;
@@ -264,6 +272,9 @@ h1 {
         font-size: 14px;
         padding: 8px 12px;
     }
+    .file-upload{
+      margin-bottom: 20px;
+    }
 }
 
 /* From Uiverse.io by Jedi-hongbin */ 
@@ -430,7 +441,7 @@ h1 {
     padding: 5px;
     margin-left: 20px;
     position: relative;
-    width: 8.2em;
+    width: 7.3em;
     height: 2em;
     transition: 0.5s;
     font-size: 17px;
@@ -567,7 +578,36 @@ h1 {
   .btn3:hover {
     background-color: #24292e;
   }
-  
+  /* Responsive styles */
+@media screen and (max-width: 768px) {
+  .btn1 p, .btn2 p, .btn3 p {
+      display: none; 
+  }
+
+  .btn1 svg, .btn2 svg, .btn3 svg {
+      opacity: 1; 
+  }
+
+  .btn1, .btn2, .btn3 { 
+      width: 0; 
+      height: 0; 
+      padding: 17px;
+      border: 0;
+  }
+
+  .btn1 svg {
+      fill: #0077b5;
+  }
+
+  .btn2 svg {
+      fill: #bc2a8d;
+  }
+
+  .btn3 svg {
+      fill: #24292e;
+  }
+}
+
   
   .search-bar {
     display: flex;

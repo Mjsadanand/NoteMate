@@ -22,6 +22,7 @@ function Home() {
     <div className="app-container">
       <header className="app-header">
         <h1 className="app-title">Notemate</h1>
+        <div className="app-para" style={{textAlign:"center",color:"blue"}}>Note sharing platform</div>
       </header>
       <main className="app-content">
         {!selectedSubject ? (

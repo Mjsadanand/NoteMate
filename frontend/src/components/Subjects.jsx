@@ -2,20 +2,20 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
 
-function Subjects({ subjects, setSelectedSubject, fetchSubjects }) {
-  const [newSubject, setNewSubject] = useState("");
+function Subjects({ subjects, setSelectedSubject }) {
+  // const [newSubject, setNewSubject] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
-  const createSubject = async () => {
-    if (!newSubject.trim()) return alert("Subject name is required.");
-    await fetch("http://localhost:5000/api/subjects", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name: newSubject }),
-    });
-    setNewSubject("");
-    fetchSubjects();
-  };
+  // const createSubject = async () => {
+  //   if (!newSubject.trim()) return alert("Subject name is required.");
+  //   await fetch("http://localhost:5000/api/subjects", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ name: newSubject }),
+  //   });
+  //   setNewSubject("");
+  //   fetchSubjects(); 
+  // };
 
   const filteredSubjects = subjects.filter((subject) =>
     subject.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -31,7 +31,7 @@ function Subjects({ subjects, setSelectedSubject, fetchSubjects }) {
           placeholder="Search subjects..."
         />
       </div>
-      <div className="add-subject">
+      {/* <div className="add-subject">
         <input
           type="text"
           value={newSubject}
@@ -39,7 +39,7 @@ function Subjects({ subjects, setSelectedSubject, fetchSubjects }) {
           placeholder="Enter subject name"
         />
         <button onClick={createSubject}>Create Subject</button>
-      </div>
+      </div> */}
       <div className="subjects-grid">
         {filteredSubjects.map((subject) => (
           <div
