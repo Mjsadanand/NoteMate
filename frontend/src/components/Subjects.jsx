@@ -1,9 +1,10 @@
-import  { useState } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
 
 function Subjects({ subjects, setSelectedSubject, fetchSubjects }) {
   const [newSubject, setNewSubject] = useState("");
+  const [searchTerm, setSearchTerm] = useState("");
 
   const createSubject = async () => {
     if (!newSubject.trim()) return alert("Subject name is required.");
@@ -16,8 +17,20 @@ function Subjects({ subjects, setSelectedSubject, fetchSubjects }) {
     fetchSubjects();
   };
 
+  const filteredSubjects = subjects.filter((subject) =>
+    subject.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="subjects-container">
+      <div className="search-bar">
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Search subjects..."
+        />
+      </div>
       <div className="add-subject">
         <input
           type="text"
@@ -28,7 +41,7 @@ function Subjects({ subjects, setSelectedSubject, fetchSubjects }) {
         <button onClick={createSubject}>Create Subject</button>
       </div>
       <div className="subjects-grid">
-        {subjects.map((subject) => (
+        {filteredSubjects.map((subject) => (
           <div
             key={subject._id}
             className="subject-card"

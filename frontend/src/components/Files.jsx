@@ -84,7 +84,7 @@ function Files({ subject, setSelectedSubject }) {
           Upload File
         </button>
       </div>
-      <span className="allow">(Only Allowed types are JPEG, PNG, PDF, DOC, DOCX.)</span>
+      <div style={{textAlign:"center"}}>(Only Allowed types are JPEG, PNG, PDF, DOC, DOCX.)</div>
     </div>
   );
 }

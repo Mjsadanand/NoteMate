@@ -1,4 +1,5 @@
 /* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #f9fafb;
@@ -8,6 +9,16 @@ body {
     line-height: 1.6;
 }
 
+.app-title{
+  margin-top: 8px;
+  background: linear-gradient(to right, #8A2BE2, #FF1493, #1E90FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Playwrite GB S", serif;
+}
+.app-content{
+  font-family: "Ubuntu", serif;
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -199,9 +210,6 @@ h1 {
 
 .upload-button:hover {
     background-color: #219150;
-}
-.allow{
-    text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -512,4 +520,89 @@ h1 {
   .btn2:hover {
     background-color: #bc2a4e;
   }
+
+  .btn3 {
+    background-color: #fff;
+    border: 1px solid #24292e;
+    padding: 5px;
+    position: relative;
+    width: 7.2em;
+    height: 2em;
+    transition: 0.5s;
+    font-size: 17px;
+    border-radius: 0.4em;
+  }
+  
+  .btn3 p {
+    position: absolute;
+    top: 0.2em;
+    left: 1.2em;
+    margin: 0;
+    padding: 0;
+    transition: 0.5s;
+    color: #24292e;
+  }
+  
+  .btn3 svg {
+    position: absolute;
+    top: 0.45em;
+    right: 0.5em;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    transition: 0.5s;
+    height: 1em;
+    fill: #fff;
+  }
+  
+  .btn3:hover p {
+    left: 0.7em;
+    color: #fff;
+  }
+  
+  .btn3:hover svg {
+    opacity: 1;
+  }
+  
+  .btn3:hover {
+    background-color: #24292e;
+  }
+  
+  
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .search-bar input {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+  }
+  .app-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 10px 10px;
+    font-size: 0.9rem;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  .footer-text {
+    margin: 0;
+    color: #000;
+    font-family: "Poppins", sans-serif;
+  }
+  
+
   
