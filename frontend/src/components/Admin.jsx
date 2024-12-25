@@ -8,7 +8,7 @@ function Admin({ fetchSubjects }) {
 
     const createSubject = async () => {
         if (!newSubject.trim()) return alert("Subject name is required.");
-        await fetch("http://localhost:5000/api/subjects", {
+        await fetch("http://localhost:8000/api/subjects", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name: newSubject }),
@@ -20,7 +20,7 @@ function Admin({ fetchSubjects }) {
 
     const fetchSubjectsInfo = async () => {
         try {
-            const response = await fetch("http://localhost:5000/api/subjects/info");
+            const response = await fetch("http://localhost:8000/api/subjects/info");
             if (!response.ok) {
                 throw new Error("Failed to fetch subjects info");
             }

@@ -12,6 +12,8 @@ import authRoutes from './routes/authRoutes.js';
 const app = express();
 connectDB();
 
+const _dirname = path.resolve();
+
 // Ensure uploads directory exists
 const UPLOADS_DIR = './uploads';
 if (!fs.existsSync(UPLOADS_DIR)) {
@@ -39,7 +41,7 @@ const fileFilter = (req, file, cb) => {
     cb(new Error('Invalid file type. Allowed types are JPEG, PNG, PPT, PDF, DOC, DOCX.'));
   }
 };
-
+ 
 
 const upload = multer({
   storage,
@@ -54,6 +56,11 @@ app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 app.use('/api/subjects', subjectRoutes);
 app.use('/api/auth', authRoutes);
 
+app.use(express.static(path.join(_dirname, '/frontend/dist')));
+app.get('*',(_,res)=>{
+  res.sendFile(path.resolve(_dirname,'frontend','dist','index.html'));
+})
+
 // File Upload Route
 app.post('/api/subjects/:subjectId/files', upload.single('file'), async (req, res) => {
   const { subjectId } = req.params;
@@ -67,7 +74,7 @@ app.post('/api/subjects/:subjectId/files', upload.single('file'), async (req, re
     }
 
     const { originalname, filename } = req.file;
-    const fileLink = `http://localhost:5000/uploads/${filename}`;
+    const fileLink = `http://localhost:8000/uploads/${filename}`;
 
     const subject = await Subject.findById(subjectId);
     if (!subject) {
@@ -105,7 +112,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 8000;
 app.listen(port, () => {
   console.log(`Server running on http://localhost:${port}`);
 });

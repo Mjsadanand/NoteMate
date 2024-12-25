@@ -9,7 +9,7 @@ function Files({ subject, setSelectedSubject }) {
   useEffect(() => {
     const fetchFiles = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/subjects/${subject._id}`);
+        const response = await fetch(`http://localhost:8000/api/subjects/${subject._id}`);
         if (!response.ok) throw new Error("Failed to fetch files.");
         const data = await response.json();
         console.log('Fetched data:', data); // Debug the response
@@ -18,7 +18,7 @@ function Files({ subject, setSelectedSubject }) {
         console.error("Error fetching files:", error.message);
         setFiles([]); // Fallback to an empty array on error
       }
-    };
+    }; 
     fetchFiles();
   }, [subject]);
 
@@ -33,7 +33,7 @@ function Files({ subject, setSelectedSubject }) {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/subjects/${subject._id}/files`,
+        `http://localhost:8000/api/subjects/${subject._id}/files`,
         { method: "POST", body: formData }
       );
 

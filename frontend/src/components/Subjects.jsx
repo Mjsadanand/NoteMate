@@ -3,19 +3,21 @@ import PropTypes from "prop-types";
 import "./styles.css";
 
 function Subjects({ subjects, setSelectedSubject }) {
-  // const [newSubject, setNewSubject] = useState("");
+  const [newSubject, setNewSubject] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
-  // const createSubject = async () => {
-  //   if (!newSubject.trim()) return alert("Subject name is required.");
-  //   await fetch("http://localhost:5000/api/subjects", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ name: newSubject }),
-  //   });
-  //   setNewSubject("");
-  //   fetchSubjects(); 
-  // };
+  // eslint-disable-next-line no-unused-vars
+  const createSubject = async () => {
+    if (!newSubject.trim()) return alert("Subject name is required.");
+    await fetch("http://localhost:8000/api/subjects", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name: newSubject }),
+    });
+    setNewSubject("");
+    // eslint-disable-next-line no-undef
+    fetchSubjects();  
+  };
 
   const filteredSubjects = subjects.filter((subject) =>
     subject.name.toLowerCase().includes(searchTerm.toLowerCase())
