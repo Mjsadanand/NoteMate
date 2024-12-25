@@ -74,7 +74,7 @@ app.post('/api/subjects/:subjectId/files', upload.single('file'), async (req, re
     }
 
     const { originalname, filename } = req.file;
-    const fileLink = `http://localhost:8000/uploads/${filename}`;
+    const fileLink = `https://notemate-mnyf.onrender.com/uploads/${filename}`;
 
     const subject = await Subject.findById(subjectId);
     if (!subject) {

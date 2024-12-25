@@ -9,7 +9,7 @@ function Subjects({ subjects, setSelectedSubject }) {
   // eslint-disable-next-line no-unused-vars
   const createSubject = async () => {
     if (!newSubject.trim()) return alert("Subject name is required.");
-    await fetch("http://localhost:8000/api/subjects", {
+    await fetch("https://notemate-mnyf.onrender.com/api/subjects", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name: newSubject }),

@@ -24,7 +24,7 @@ const AdminLogin = () => {
     setError('');
 
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/admin', formData);
+      const response = await axios.post('https://notemate-mnyf.onrender.com/api/auth/admin', formData);
       if (response.data.success) {
         // Set session
         sessionStorage.setItem('isAdminLoggedIn', 'true');
