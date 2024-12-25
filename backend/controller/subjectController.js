@@ -38,34 +38,22 @@ export const createSubject = async (req, res) => {
     }
 };
 
-// Update an existing subject by ID
-export const updateSubject = async (req, res) => {
-    const { id } = req.params;
-    const { name } = req.body;
-    try {
-        if (!name) return res.status(400).json({ error: 'Subject name is required' });
-        const updatedSubject = await Subject.findByIdAndUpdate(
-            id,
-            { name },
-            { new: true, runValidators: true } // Return the updated document and validate updates
-        );
-        if (!updatedSubject) return res.status(404).json({ error: 'Subject not found' });
-        res.json(updatedSubject);
-    } catch (error) {
-        console.error('Error updating subject:', error);
-        res.status(500).json({ error: 'Failed to update subject' });
-    }
-};
 
-// Delete a subject by ID
-export const deleteSubject = async (req, res) => {
-    const { id } = req.params;
+export const getSubjectsWithNotes = async (req, res) => {
     try {
-        const deletedSubject = await Subject.findByIdAndDelete(id);
-        if (!deletedSubject) return res.status(404).json({ error: 'Subject not found' });
-        res.json({ message: 'Subject deleted successfully', deletedSubject });
+        const subjects = await Subject.find(); // Fetch all subjects
+        const subjectsWithCounts = subjects.map((subject) => ({
+            _id: subject._id,
+            name: subject.name,
+            notesCount: subject.files ? subject.files.length : 0, // Count the number of notes (files) in each subject
+        }));
+
+        res.status(200).json({
+            totalSubjects: subjects.length, // Total number of subjects
+            subjects: subjectsWithCounts,  // Array of subjects with note counts
+        });
     } catch (error) {
-        console.error('Error deleting subject:', error);
-        res.status(500).json({ error: 'Failed to delete subject' });
+        console.error('Error fetching subjects with notes:', error.message);
+        res.status(500).json({ error: 'Failed to fetch subjects with notes' });
     }
 };

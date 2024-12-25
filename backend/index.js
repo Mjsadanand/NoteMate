@@ -7,6 +7,7 @@ import fs from 'fs'; // For file system operations
 import connectDB from './db/db.js';
 import subjectRoutes from './routes/subjects.js';
 import Subject from './models/subjects.js';
+import authRoutes from './routes/authRoutes.js';
 
 const app = express();
 connectDB();
@@ -21,7 +22,7 @@ if (!fs.existsSync(UPLOADS_DIR)) {
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, UPLOADS_DIR); 
-  },
+  }, 
   filename: (req, file, cb) => {
     const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1E9)}`;
     cb(null, `${uniqueSuffix}-${file.originalname}`);
@@ -30,7 +31,7 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, cb) => {
   console.log(`Uploading file with MIME type: ${file.mimetype}`);
-  const allowedTypes = /jpeg|jpg|png|pdf|vnd.openxmlformats-officedocument.presentationml.presentation|pptx|doc|docx/;
+  const allowedTypes = /jpeg|jpg|png|pdf|vnd.ms-powerpoint|vnd.openxmlformats-officedocument.presentationml.presentation|pptx|doc|docx/;
   const isValid = allowedTypes.test(file.mimetype);
   if (isValid) {
     cb(null, true); 
@@ -51,6 +52,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 app.use('/api/subjects', subjectRoutes);
+app.use('/api/auth', authRoutes);
 
 // File Upload Route
 app.post('/api/subjects/:subjectId/files', upload.single('file'), async (req, res) => {
@@ -103,7 +105,7 @@ app.use((err, req, res, next) => {
 });
 
 // Start the server
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });

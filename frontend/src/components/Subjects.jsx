@@ -31,7 +31,7 @@ function Subjects({ subjects, setSelectedSubject }) {
           placeholder="Search subjects..."
         />
       </div>
-      {/* <div className="add-subject">
+      {/* <div className="add-subject"> 
         <input
           type="text"
           value={newSubject}

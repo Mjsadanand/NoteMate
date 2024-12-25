@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+GB+S:ital,wght@0,100..400;1,100..400&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f9fafb;
+    background-color: rgb(252, 252, 252);
     color: #333;
     margin: 0;
     padding: 0;
@@ -21,8 +21,18 @@ body {
   margin-bottom: 90px;
 }
 .app-para{
+  text-align: center;
   background: linear-gradient(to right, #9887a8, #0f29bc, #a1ff1e);
   -webkit-background-clip: text;
+  font-size: larger;
+  -webkit-text-fill-color: transparent;
+  font-family: "Playwrite GB S", serif;
+  margin-bottom: 10px;
+}
+.app-para1{
+  background: linear-gradient(to right, #9887a8, #f40014, #a1ff1e);
+  -webkit-background-clip: text;
+  text-align:center ;
   -webkit-text-fill-color: transparent;
   font-family: "Playwrite GB S", serif;
   margin-bottom: 10px;
@@ -41,7 +51,11 @@ h1 {
     font-size: 2.5rem;
     font-weight: bold;
 }
-
+.img{
+  width: 22%;
+  height: 15%;
+  align-items: center;
+}
 /* Add Subject Form */
 .add-subject {
     display: flex;
@@ -96,6 +110,7 @@ h1 {
     padding: 20px;
     background-color: #fff;
     border-radius: 10px;
+    border: 2px solid #ddd;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
@@ -105,6 +120,9 @@ h1 {
 .subject-card:hover {
     transform: translateY(-5px);
     background-color: #f0f4f8;
+}
+.subject-card:hover h3 {
+    color: #3498db;
 }
 
 .subject-card h3 {
@@ -149,6 +167,7 @@ h1 {
     border: 1px solid #ddd;
     color: #000;
     border-radius: 6px;
+    border: 2px solid #ddd;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.3s;
@@ -219,7 +238,9 @@ h1 {
 .upload-button:hover {
     background-color: #219150;
 }
-
+.file-link:hover {
+    color: #3498db;
+}
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
@@ -441,7 +462,7 @@ h1 {
     padding: 5px;
     margin-left: 20px;
     position: relative;
-    width: 7.3em;
+    width: 6.5em;
     height: 2em;
     transition: 0.5s;
     font-size: 17px;
@@ -490,7 +511,7 @@ h1 {
     border: 1px solid #bc2a8d;
     padding: 5px;
     position: relative;
-    width: 7.2em;
+    width: 6.5em;
     height: 2em;
     transition: 0.5s;
     font-size: 17px;
@@ -645,4 +666,203 @@ h1 {
   }
   
 
-  
+  .subjects-info {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    font-family: 'Arial', sans-serif;
+}
+
+.analytics-header {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+}
+
+.subjects-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+.subjects-table thead {
+    background-color: #4caf50;
+    color: white;
+}
+
+.subjects-table th,
+.subjects-table td {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #ddd;
+}
+
+.subjects-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.subjects-table tbody tr:hover {
+    background-color: #e0f7fa;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.loading-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #757575;
+}
+
+@media (max-width: 768px) {
+    .subjects-info {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .analytics-header {
+        font-size: 1.2em;
+    }
+
+    .subjects-table th,
+    .subjects-table td {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+    .flex {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px 60px;
+    }
+    .button{
+      display: none;
+    }
+    .img{
+      width: 30%;
+      height: 29%;
+      align-items: center;
+    }
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.button {
+  background: linear-gradient(45deg, #6a11cb, #2575fc); 
+  color: white; 
+  font-size: 16px; 
+  font-weight: bold; 
+  padding: 5px 20px; 
+  border-radius: 30px;
+  border: none; 
+  cursor: pointer; 
+  transition: all 0.3s ease; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.button:hover {
+  background: linear-gradient(45deg, #2575fc, #6a11cb); 
+  transform: scale(1.05); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+}
+
+.button:focus {
+  outline: none; 
+  box-shadow: 0 0 0 3px rgba(38, 133, 255, 0.5); 
+}
+
+.button:active {
+  transform: scale(1); 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+
+.admin-login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url('../assets/back.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+
+.login-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  color: #333;
+  margin-top: 8px;
+  transition: border-color 0.3s;
+}
+
+.login-input:focus {
+  border-color: #4c6ef5;
+  outline: none;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  text-align: center;
+}
+
+.login-button {
+  padding: 12px;
+  width: 100%;
+  background-color: #4c6ef5;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.login-button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.login-button:hover:not(:disabled) {
+  background-color: #3b5bdb;
+  transform: scale(1.05);
+}

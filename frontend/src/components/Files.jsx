@@ -52,7 +52,7 @@ function Files({ subject, setSelectedSubject }) {
     }
   };
 
-
+ 
   return (
     <div className="files-container">
       <h2 className="files-header">Notes for {subject.name}</h2>
@@ -64,7 +64,7 @@ function Files({ subject, setSelectedSubject }) {
         {files && files.length > 0 ? (
           files.map((file, index) => (
             <div key={`${file.fileId}-${index}`} className="file-card">
-              <strong className="file-title">{file.title}</strong>
+              {/* <strong className="file-title">{file.title}</strong> */}
               <a href={file.link} target="_blank" rel="noopener noreferrer" className="file-link">
                 {file.name}
               </a>
@@ -84,7 +84,7 @@ function Files({ subject, setSelectedSubject }) {
           Upload File
         </button>
       </div>
-      <div style={{textAlign:"center",marginBottom:"80px"}}>(Only Allowed types are JPEG, PNG, PDF, DOC, DOCX.)</div>
+      <div style={{textAlign:"center",marginBottom:"80px"}}>(Only Allowed types are JPEG, PNG,PPT, PDF, DOC.)</div>
     </div>
   );
 }

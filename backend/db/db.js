@@ -1,16 +1,20 @@
 import mongoose from 'mongoose';
+import { initializeAdmin } from '../util/initAdmin.js';
 
-const connectDB = async () => {
-    try {
-        await mongoose.connect('mongodb+srv://sadanandjm:Veda%40718@cluster0.y3hoa.mongodb.net/fileManager', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log('Connected to MongoDB');
-    } catch (error) {
-        console.error('MongoDB connection error:', error);
-        process.exit(1);
-    }
+const MONGODB_URL = process.env.MONGO_URI || 'mongodb+srv://sadanandjm:Veda%40718@cluster0.y3hoa.mongodb.net/fileManager';
+
+ const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(MONGODB_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    await initializeAdmin();
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    process.exit(1);
+  }
 };
 
 export default connectDB;
