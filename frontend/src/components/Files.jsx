@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { IoEye, IoDownload } from "react-icons"; 
+import { FaDownload, FaEye } from 'react-icons/fa'; // Example import from react-icons
 import "./styles.css";
 
 function Files({ subject, setSelectedSubject }) {
@@ -99,10 +99,10 @@ function Files({ subject, setSelectedSubject }) {
                     title="Download"
                     className="action-btn download-btn"
                   >
-                    <IoDownload />
+                    <FaDownload />
                   </button>
                   <a href={file.link} target="_blank" rel="noopener noreferrer" className="action-btn view-btn" title="View">
-                    <IoEye />
+                    <FaEye />
                   </a>
                 </div>
               </div>
