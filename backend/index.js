@@ -85,12 +85,13 @@ app.post('/api/subjects/:subjectId/files', upload.single('file'), async (req, re
 });
 
 // Serve React app
-app.use(express.static(path.join(__dirname, 'frontend', 'dist')));
+const frontendPath = path.join(__dirname, '..', 'frontend', 'dist');
+app.use(express.static(frontendPath));
 app.get('*', (_, res) => {
-  res.sendFile(path.resolve(__dirname, 'frontend', 'dist', 'index.html'));
+  res.sendFile(path.resolve(frontendPath, 'index.html'));
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
