@@ -32,7 +32,7 @@ function Admin({ fetchSubjects }) {
     };
 
     useEffect(() => {
-        fetchSubjectsInfo(); // Fetch subjects info on component mount
+        fetchSubjectsInfo(); 
     }, []);
 
     return (
