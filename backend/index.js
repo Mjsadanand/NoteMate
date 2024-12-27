@@ -15,18 +15,21 @@ connectDB();
 const _dirname = path.resolve();
 
 // Ensure uploads directory exists
-const UPLOADS_DIR = './uploads';
+const UPLOADS_DIR = path.join(process.cwd(), 'uploads');
 if (!fs.existsSync(UPLOADS_DIR)) {
   fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  console.log(`Uploads directory created at ${UPLOADS_DIR}`);
+} else {
+  console.log(`Uploads directory exists at ${UPLOADS_DIR}`);
 }
 
 // Multer Configuration
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, UPLOADS_DIR); 
-  }, 
+    cb(null, UPLOADS_DIR);
+  },
   filename: (req, file, cb) => {
-    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1E9)}`;
+    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
     cb(null, `${uniqueSuffix}-${file.originalname}`);
   },
 });
@@ -36,30 +39,29 @@ const fileFilter = (req, file, cb) => {
   const allowedTypes = /jpeg|jpg|png|pdf|vnd.ms-powerpoint|vnd.openxmlformats-officedocument.presentationml.presentation|pptx|doc|docx/;
   const isValid = allowedTypes.test(file.mimetype);
   if (isValid) {
-    cb(null, true); 
+    cb(null, true);
   } else {
     cb(new Error('Invalid file type. Allowed types are JPEG, PNG, PPT, PDF, DOC, DOCX.'));
   }
 };
- 
 
 const upload = multer({
   storage,
   fileFilter,
-  limits: { fileSize: 300 * 1024 * 1024 }, // Limit file size to 5 MB
+  limits: { fileSize: 300 * 1024 * 1024 }, // Limit file size to 300 MB
 });
 
 // Middleware
 app.use(cors());
 app.use(bodyParser.json());
-app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
+app.use('/uploads', express.static(UPLOADS_DIR));
 app.use('/api/subjects', subjectRoutes);
 app.use('/api/auth', authRoutes);
 
 app.use(express.static(path.join(_dirname, '/frontend/dist')));
-app.get('*',(_,res)=>{
-  res.sendFile(path.resolve(_dirname,'frontend','dist','index.html'));
-})
+app.get('*', (_, res) => {
+  res.sendFile(path.resolve(_dirname, 'frontend', 'dist', 'index.html'));
+});
 
 // File Upload Route
 app.post('/api/subjects/:subjectId/files', upload.single('file'), async (req, res) => {
@@ -70,11 +72,11 @@ app.post('/api/subjects/:subjectId/files', upload.single('file'), async (req, re
 
     if (!req.file) {
       console.log('No file uploaded.');
-      return res.status(400).json({ message: 'No file uploaded.' }); 
+      return res.status(400).json({ message: 'No file uploaded.' });
     }
 
     const { originalname, filename } = req.file;
-    const fileLink = `https://notemate-mnyf.onrender.com/uploads/${filename}`;
+    const fileLink = `${req.protocol}://${req.get('host')}/uploads/${filename}`;
 
     const subject = await Subject.findById(subjectId);
     if (!subject) {
@@ -98,14 +100,14 @@ app.post('/api/subjects/:subjectId/files', upload.single('file'), async (req, re
   }
 });
 
-
-
 // Error Handling Middleware
 app.use((err, req, res, next) => {
   if (err instanceof multer.MulterError) {
+    console.error('Multer error:', err.message);
     return res.status(400).json({ message: 'File upload error', error: err.message });
   }
   if (err) {
+    console.error('Server error:', err.message);
     return res.status(500).json({ message: 'Server Error', error: err.message });
   }
   next();
