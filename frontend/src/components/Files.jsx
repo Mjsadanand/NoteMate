@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { IoEye, IoDownload } from "react-icons/io5"; 
+import { IoEye, IoDownload } from "react-icons"; 
 import "./styles.css";
 
 function Files({ subject, setSelectedSubject }) {
