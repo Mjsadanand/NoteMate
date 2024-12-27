@@ -3,17 +3,14 @@ import { initializeAdmin } from '../util/initAdmin.js';
 
 const MONGODB_URL = process.env.MONGO_URI || 'mongodb+srv://sadanandjm:Veda%40718@cluster0.y3hoa.mongodb.net/fileManager';
 
- const connectDB = async () => {
+const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(MONGODB_URL, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true
-    });
+    const conn = await mongoose.connect(MONGODB_URL);
     console.log(`MongoDB Connected: ${conn.connection.host}`);
     await initializeAdmin();
   } catch (error) {
     console.error(`Error: ${error.message}`);
-    process.exit(1);
+    process.exit(1); // Exit the process with failure
   }
 };
 
