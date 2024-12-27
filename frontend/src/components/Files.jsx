@@ -7,6 +7,7 @@ function Files({ subject, setSelectedSubject }) {
   const [fileInput, setFileInput] = useState(null);
   const [isLoading, setIsLoading] = useState(false); // State for loader
 
+  // Fetch files for a subject
   useEffect(() => {
     const fetchFiles = async () => {
       try {
@@ -23,6 +24,7 @@ function Files({ subject, setSelectedSubject }) {
     fetchFiles();
   }, [subject]);
 
+  // Upload a file to the server
   const uploadFile = async () => {
     if (!fileInput) {
       alert("Please select a file.");
