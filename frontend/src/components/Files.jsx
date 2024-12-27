@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { IoEye, IoDownload } from "react-icons/io5"; 
 import "./styles.css";
 
 function Files({ subject, setSelectedSubject }) {
   const [files, setFiles] = useState([]);
   const [fileInput, setFileInput] = useState(null);
-  const [isLoading, setIsLoading] = useState(false); // State for loader
+  const [isLoading, setIsLoading] = useState(false); 
 
   // Fetch files for a subject
   useEffect(() => {
@@ -24,7 +25,7 @@ function Files({ subject, setSelectedSubject }) {
     fetchFiles();
   }, [subject]);
 
-  // Upload a file to the server
+ 
   const uploadFile = async () => {
     if (!fileInput) {
       alert("Please select a file.");
@@ -34,7 +35,7 @@ function Files({ subject, setSelectedSubject }) {
     const formData = new FormData();
     formData.append("file", fileInput);
 
-    setIsLoading(true); // Show loader
+    setIsLoading(true); 
 
     try {
       const response = await fetch(
@@ -59,6 +60,16 @@ function Files({ subject, setSelectedSubject }) {
     }
   };
 
+  // Handle file download
+  const handleDownload = (link) => {
+    const a = document.createElement('a');
+    a.href = link;
+    a.download = link.split('/').pop(); // Use the file name for the download
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
   return (
     <div className="files-container">
       <h2 className="files-header">Notes for {subject.name}</h2>
@@ -78,9 +89,23 @@ function Files({ subject, setSelectedSubject }) {
         {files && files.length > 0 ? (
           files.map((file, index) => (
             <div key={`${file.fileId}-${index}`} className="file-card">
-              <a href={file.link} target="_blank" rel="noopener noreferrer" className="file-link">
-                {file.name}
-              </a>
+              <div className="file-info">
+                <a href={file.link} target="_blank" rel="noopener noreferrer" className="file-link">
+                  {file.name}
+                </a>
+                <div className="file-actions">
+                  <button
+                    onClick={() => handleDownload(file.link)}
+                    title="Download"
+                    className="action-btn download-btn"
+                  >
+                    <IoDownload />
+                  </button>
+                  <a href={file.link} target="_blank" rel="noopener noreferrer" className="action-btn view-btn" title="View">
+                    <IoEye />
+                  </a>
+                </div>
+              </div>
             </div>
           ))
         ) : (
