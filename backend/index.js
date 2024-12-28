@@ -10,9 +10,8 @@ import connectDB from './db/db.js';
 import subjectRoutes from './routes/subjects.js';
 import Subject from './models/subjects.js';
 import authRoutes from './routes/authRoutes.js';
-import pkg from 'multer-gridfs-storage';
+import GridFsStorage from 'multer-gridfs-storage';
 
-const { GridFsStorage } = pkg;
 
 const app = express();
 connectDB();
