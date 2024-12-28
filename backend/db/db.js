@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import { initializeAdmin } from '../util/initAdmin.js';
+
+dotenv.config();
 
 const username = encodeURIComponent('sadanandjm');  // Use encodeURIComponent to encode special characters
 const password = encodeURIComponent('Veda@718');  // Encode special characters in password
