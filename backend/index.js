@@ -6,6 +6,7 @@ import mongoose from 'mongoose';
 import multer from 'multer';
 import Grid from 'gridfs-stream';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import connectDB from './db/db.js';
 import subjectRoutes from './routes/subjects.js';
