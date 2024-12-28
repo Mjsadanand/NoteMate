@@ -19,15 +19,10 @@ connectDB();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// MongoDB connection for GridFS
-const conn = mongoose.createConnection(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
 
 let gfs;
-conn.once('open', () => {
-  gfs = Grid(conn.db, mongoose.mongo);
+mongoose.connection.once('open', () => {
+  gfs = Grid(mongoose.connection.db, mongoose.mongo);
   gfs.collection('uploads');
 });
 
