@@ -3,7 +3,6 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import multer from 'multer';
-import { GridFsStorage } from 'multer-gridfs-storage';
 import Grid from 'gridfs-stream';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -11,6 +10,9 @@ import connectDB from './db/db.js';
 import subjectRoutes from './routes/subjects.js';
 import Subject from './models/subjects.js';
 import authRoutes from './routes/authRoutes.js';
+import pkg from 'multer-gridfs-storage';
+
+const { GridFsStorage } = pkg;
 
 const app = express();
 connectDB();
