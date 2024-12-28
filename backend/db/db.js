@@ -6,7 +6,7 @@ dotenv.config();
 
 const username = encodeURIComponent('sadanandjm');  // Use encodeURIComponent to encode special characters
 const password = encodeURIComponent('Veda@718');  // Encode special characters in password
-const MONGODB_URL = process.env.MONGO_URI || `mongodb+srv://${username}:${password}@cluster0.y3hoa.mongodb.net/fileManager`;
+const MONGODB_URL =`mongodb+srv://${username}:${password}@cluster0.y3hoa.mongodb.net/fileManager`;
 
 const connectDB = async () => {
   try {
