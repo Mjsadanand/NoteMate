@@ -69,9 +69,15 @@ function Files({ subject, setSelectedSubject }) {
         {files && files.length > 0 ? (
           files.map((file) => (
             <div key={file.fileId} className="file-card">
-              <a href={file.link} target="_blank" rel="noopener noreferrer">
+              <a href={file.link} target="_blank" rel="noopener noreferrer" className="file-name">
                 {file.name}
               </a>
+              <button
+                className="download-btn"
+                onClick={() => window.open(file.link, "_self")}
+              >
+                Download
+              </button>
             </div>
           ))
         ) : (
@@ -83,7 +89,7 @@ function Files({ subject, setSelectedSubject }) {
           type="file"
           onChange={(e) => setFileInput(e.target.files[0])}
         />
-        <button onClick={uploadFile}>Upload</button>
+        <button className="download-btn" onClick={uploadFile}>Upload</button>
       </div>
       {isLoading && (
         <div className="loader-popup">
