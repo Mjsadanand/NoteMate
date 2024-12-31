@@ -1,26 +1,18 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
 import cors from 'cors';
-import mongoose from 'mongoose';
 import multer from 'multer';
-import { GridFsStorage } from 'multer-gridfs-storage';
-import Grid from 'gridfs-stream';
 import path from 'path';
-import fs from 'fs';
-import { fileURLToPath } from 'url';
+import fs from 'fs'; // For file system operations
 import connectDB from './db/db.js';
 import subjectRoutes from './routes/subjects.js';
 import Subject from './models/subjects.js';
 import authRoutes from './routes/authRoutes.js';
 
-dotenv.config(); 
-
 const app = express();
 connectDB();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const _dirname = path.resolve();
 
 // Ensure uploads directory exists
 const UPLOADS_DIR = path.join(process.cwd(), 'uploads');
@@ -31,32 +23,33 @@ if (!fs.existsSync(UPLOADS_DIR)) {
   console.log(`Uploads directory exists at ${UPLOADS_DIR}`);
 }
 
-// GridFS setup
-let gfs;
-mongoose.connection.once('open', () => {
-  gfs = Grid(mongoose.connection.db, mongoose.mongo);
-  gfs.collection('uploads');
+// Multer Configuration
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, UPLOADS_DIR);
+  },
+  filename: (req, file, cb) => {
+    const uniqueSuffix = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
+    cb(null, `${uniqueSuffix}-${file.originalname}`);
+  },
 });
 
-// Multer-GridFS Storage Configuration
-const storage = new GridFsStorage({
-  url: process.env.MONGO_URI,
-  file: (req, file) => {
-    const allowedTypes = /jpeg|jpg|png|pdf|ppt|pptx|doc|docx/;
-    const isValid = allowedTypes.test(file.mimetype);
-
-    if (!isValid) {
-      return new Error('Invalid file type. Allowed types are JPEG, PNG, PPT, PDF, DOC.');
-    }
-
-    return {
-      filename: `${Date.now()}-${file.originalname}`,
-      bucketName: 'uploads'
-    };
+const fileFilter = (req, file, cb) => {
+  console.log(`Uploading file with MIME type: ${file.mimetype}`);
+  const allowedTypes = /jpeg|jpg|png|pdf|vnd.ms-powerpoint|vnd.openxmlformats-officedocument.presentationml.presentation|pptx|doc|docx/;
+  const isValid = allowedTypes.test(file.mimetype);
+  if (isValid) {
+    cb(null, true);
+  } else {
+    cb(new Error('Invalid file type. Allowed types are JPEG, PNG, PPT, PDF, DOC, DOCX.'));
   }
-});
+};
 
-const upload = multer({ storage });
+const upload = multer({
+  storage,
+  fileFilter,
+  limits: { fileSize: 300 * 1024 * 1024 }, // Limit file size to 300 MB
+});
 
 // Middleware
 app.use(cors());
@@ -65,38 +58,63 @@ app.use('/uploads', express.static(UPLOADS_DIR));
 app.use('/api/subjects', subjectRoutes);
 app.use('/api/auth', authRoutes);
 
+app.use(express.static(path.join(_dirname, '/frontend/dist')));
+app.get('*', (_, res) => {
+  res.sendFile(path.resolve(_dirname, 'frontend', 'dist', 'index.html'));
+});
+
+// File Upload Route
 app.post('/api/subjects/:subjectId/files', upload.single('file'), async (req, res) => {
   const { subjectId } = req.params;
 
-  if (!req.file) {
-    console.log('No file uploaded.');
-    return res.status(400).json({ message: 'No file uploaded.' });
+  try {
+    console.log('Request received:', { subjectId, file: req.file, body: req.body });
+
+    if (!req.file) {
+      console.log('No file uploaded.');
+      return res.status(400).json({ message: 'No file uploaded.' });
+    }
+
+    const { originalname, filename } = req.file;
+    const fileLink = `${req.protocol}://${req.get('host')}/uploads/${filename}`;
+
+    const subject = await Subject.findById(subjectId);
+    if (!subject) {
+      console.log(`Subject not found for ID: ${subjectId}`);
+      return res.status(404).json({ message: 'Subject not found.' });
+    }
+
+    const fileMetadata = { name: originalname, link: fileLink, fileId: filename };
+    subject.files.push(fileMetadata);
+    await subject.save();
+
+    console.log('File uploaded successfully:', fileMetadata);
+    res.status(201).json({
+      message: 'File uploaded successfully.',
+      file: fileMetadata,
+      subject,
+    });
+  } catch (error) {
+    console.error('Error processing file upload:', error.message);
+    res.status(500).json({ message: 'Server Error', error: error.message });
   }
-
-  const { originalname, filename } = req.file;
-  const fileLink = `${req.protocol}://${req.get('host')}/uploads/${filename}`;
-
-  const subject = await Subject.findById(subjectId);
-  if (!subject) {
-    console.log(`Subject not found for ID: ${subjectId}`);
-    return res.status(404).json({ message: 'Subject not found.' });
-  }
-
-  const fileMetadata = { name: originalname, link: fileLink, fileId: filename };
-  subject.files.push(fileMetadata);
-  await subject.save();
-
-  res.status(200).json(subject);
 });
 
-// Serve React app
-const frontendPath = path.join(__dirname, '..', 'frontend', 'dist');
-app.use(express.static(frontendPath));
-app.get('*', (_, res) => {
-  res.sendFile(path.resolve(frontendPath, 'index.html'));
+// Error Handling Middleware
+app.use((err, req, res, next) => {
+  if (err instanceof multer.MulterError) {
+    console.error('Multer error:', err.message);
+    return res.status(400).json({ message: 'File upload error', error: err.message });
+  }
+  if (err) {
+    console.error('Server error:', err.message);
+    return res.status(500).json({ message: 'Server Error', error: err.message });
+  }
+  next();
 });
 
-const PORT = process.env.PORT || 8000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+// Start the server
+const port = process.env.PORT || 8000;
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
 });
