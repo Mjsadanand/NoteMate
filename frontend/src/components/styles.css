@@ -902,3 +902,15 @@ h1 {
   font-size: 18px;
   margin-top: 10px;
 }
+.download-btn {
+  padding: 8px 15px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.download-btn:hover {
+  background-color: #218838;
+}

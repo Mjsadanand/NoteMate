@@ -74,7 +74,7 @@ function Files({ subject, setSelectedSubject }) {
               </a>
               <button
                 className="download-btn"
-                onClick={() => window.open(file.link, "_self")}
+                onClick={() => window.open(file.link, "_blank")}
               >
                 Download
               </button>
