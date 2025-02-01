@@ -10,7 +10,7 @@ function Home() {
   const [selectedSubject, setSelectedSubject] = useState(null);
 
   const fetchSubjects = async () => {
-    const response = await fetch("https://notemate-mnyf.onrender.com/api/subjects");
+    const response = await fetch("http://localhost:8000/api/subjects");
     const data = await response.json();
     setSubjects(data);
   };
