@@ -11,7 +11,7 @@ function Files({ subject, setSelectedSubject }) {
     const fetchFiles = async () => {
       try {
         const response = await fetch(
-          `http://localhost:8000/api/subjects/${subject._id}`
+          `https://notemate-mnyf.onrender.com/api/subjects/${subject._id}`
         );
         if (!response.ok) throw new Error("Failed to fetch files.");
         const data = await response.json();
@@ -37,7 +37,7 @@ function Files({ subject, setSelectedSubject }) {
 
     try {
       const response = await fetch(
-        `http://localhost:8000/api/subjects/${subject._id}/files`,
+        `https://notemate-mnyf.onrender.com/api/subjects/${subject._id}/files`,
         { method: "POST", body: formData }
       );
 
