@@ -34,7 +34,7 @@ function Files({ subject, setSelectedSubject }) {
     formData.append("file", fileInput);
 
     setIsLoading(true);
-
+ 
     try {
       const response = await fetch(
         `https://notemate-mnyf.onrender.com/api/subjects/${subject._id}/files`,
@@ -91,6 +91,7 @@ function Files({ subject, setSelectedSubject }) {
       <div className="file-upload">
         <input
           type="file"
+          className="file-input"
           onChange={(e) => setFileInput(e.target.files[0])}
         />
         <button className="download-btn" onClick={uploadFile}>
