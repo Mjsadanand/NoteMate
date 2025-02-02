@@ -7,7 +7,7 @@ function Files({ subject, setSelectedSubject }) {
   const [fileInput, setFileInput] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchFiles = async () => {
       try {
         const response = await fetch(
