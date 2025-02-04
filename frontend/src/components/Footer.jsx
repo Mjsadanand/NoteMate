@@ -4,7 +4,7 @@ import "./styles.css";
 function Footer() {
     return (
         <footer className="app-footer">
-            <div>
+            <div> 
                 <button className="btn1" onClick={() => window.open('https://www.linkedin.com/in/sadanand-m-258a99268', '_blank')}>
                     <p>Connect</p>
                     <svg viewBox="0 0 16 16" className="bi bi-whatsapp" fill="currentColor" height="16" width="18" xmlns="http://www.w3.org/2000/svg">

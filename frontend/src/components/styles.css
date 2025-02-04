@@ -127,7 +127,7 @@ h1 {
 
 /* Files List */ 
 .files-list {
-    margin-top: 30px;
+    margin-top: 20px;
     text-align: center;
     display: grid;
     grid-row: auto;
@@ -149,13 +149,9 @@ h1 {
     padding: 12px 20px;
     border-radius: 6px;
     font-size: 16px;
-    cursor: pointer;
+    cursor: pointer;  
     transition: background-color 0.3s ease;
     margin-top: 20px;
-}
-
-.files-list button:hover {
-    background-color: #219150;
 }
 
 .file-card {
@@ -208,22 +204,6 @@ h1 {
   width: 200px;
 }
 
-.upload-button {
-    background-color: #27ae60;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.upload-button:hover {
-    background-color: #219150;
-}
-.file-link:hover {
-    color: #3498db;
-}
 @media (max-width: 768px) {
     h1 {
         font-size: 2rem;
@@ -250,7 +230,7 @@ h1 {
         padding: 10px;
     }
     .files-header {
-      font-size: 0.9rem;
+      font-size: 1.2rem;
   }
 }
 
@@ -283,40 +263,6 @@ h1 {
       margin-bottom: 20px;
     }
 }
-
-/* From Uiverse.io by Jedi-hongbin */ 
-.btn {
-    display: flex;
-    height: 3em;
-    width: 100px;
-    align-items: center;
-    justify-content: center;
-    background-color: #eeeeee4b;
-    border-radius: 3px;
-    letter-spacing: 1px;
-    transition: all 0.2s linear;
-    cursor: pointer;
-    border: none;
-    background: #fff;
-    margin-left: 30px;
-   }
-   
-   .btn > svg {
-    margin-right: 5px;
-    margin-left: 5px;
-    font-size: 20px;
-    transition: all 0.4s ease-in;
-   }
-   
-   .btn:hover > svg {
-    font-size: 1.2em;
-    transform: translateX(-5px);
-   }
-   
-   .btn:hover {
-    box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
-    transform: translateY(-2px);
-   }
 
 /* From Uiverse.io by 3bdel3ziz-T */ 
 .container {
@@ -1092,7 +1038,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.9);
   z-index: 1000;
 }
 
@@ -1311,8 +1257,8 @@ h1 {
 .styled-wrapper .bn {
   display: block;
   position: relative;
-  width: 66px;
-  height: 66px;
+  width: 74px;
+  height: 74px;
   margin-left: 30px;
   overflow: hidden;
   outline: none;
@@ -1388,8 +1334,8 @@ h1 {
 
 @media (max-width: 480px){
   .styled-wrapper .bn {
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     margin-left: 30px;
   }
   .file-input {
