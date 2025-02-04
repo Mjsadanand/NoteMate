@@ -134,7 +134,7 @@ function Files({ subject, setSelectedSubject }) {
         {/* <button className="upload-button" onClick={uploadFile}>
           Upload
         </button> */}
-        <button onClick={uploadFile}>
+        <button onClick={uploadFile} className="butt">
           <div className="svg-wrapper-1">
             <div className="svg-wrapper">
               <svg

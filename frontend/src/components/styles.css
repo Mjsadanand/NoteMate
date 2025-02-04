@@ -1098,11 +1098,7 @@ h1 {
   --duration: 3s;
   width: 44px;
   height: 44px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  position: relative;
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
@@ -1259,7 +1255,7 @@ h1 {
   margin: 0 16px;
 }
 /* For uplaod button */ 
-button {
+.butt {
   font-family: inherit;
   font-size: 20px;
   background: royalblue;
@@ -1275,31 +1271,31 @@ button {
   cursor: pointer;
 }
 
-button span {
+.butt span {
   display: block;
   margin-left: 0.3em;
   transition: all 0.3s ease-in-out;
 }
 
-button svg {
+.butt svg {
   display: block;
   transform-origin: center center;
   transition: transform 0.3s ease-in-out;
 }
 
-button:hover .svg-wrapper {
+.butt:hover .svg-wrapper {
   animation: fly-1 0.6s ease-in-out infinite alternate;
 }
 
-button:hover svg {
+.butt:hover svg {
   transform: translateX(1.2em) rotate(45deg) scale(1.1);
 }
 
-button:hover span {
+.butt:hover span {
   transform: translateX(5em);
 }
 
-button:active {
+.butt:active {
   transform: scale(0.95);
 }
 
