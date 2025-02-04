@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
+import image from "../assets/sample1.png";
 
 function Files({ subject, setSelectedSubject }) {
   const [files, setFiles] = useState([]);
@@ -68,6 +69,11 @@ function Files({ subject, setSelectedSubject }) {
         {files.length > 0 ? (
           files.map((file) => (
             <div key={file.fileId} className="file-card">
+              <img
+                src={image}
+                alt="File Icon"
+                className="file-icon"
+              />
               <a
                 href={file.link}
                 target="_blank"
@@ -77,12 +83,13 @@ function Files({ subject, setSelectedSubject }) {
                 {file.name}
               </a>
               <button
-                className="download-btn"
+                className="buttonDownload"
                 onClick={() => window.open(file.link, "_blank")}
               >
                 Open
               </button>
             </div>
+
           ))
         ) : (
           <p>No files available.</p>
@@ -94,7 +101,7 @@ function Files({ subject, setSelectedSubject }) {
           className="file-input"
           onChange={(e) => setFileInput(e.target.files[0])}
         />
-        <button className="download-btn" onClick={uploadFile}>
+        <button className="upload-button" onClick={uploadFile}>
           Upload
         </button>
       </div>
@@ -104,6 +111,22 @@ function Files({ subject, setSelectedSubject }) {
           <p>Uploading...</p>
         </div>
       )}
+      <div className="notifications-container">
+        <div className="info">
+          <div className="flex">
+            <div className="flex-shrink-0">
+              <svg className="info-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd"></path>
+              </svg>
+            </div>
+            <div className="info-prompt-wrap">
+              <p className="">
+                Maximum file size is 10MB. Supported file types is only PDF.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
       <div className="notifications-container">
         <div className="alert">
           <div className="flex">

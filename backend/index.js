@@ -33,7 +33,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use("/api/subjects", subjectRoutes);
 app.use("/api/auth", authRoutes);
-
+ 
 app.use(express.static(path.join(_dirname, "/frontend/dist")));
 app.get("*",(_,res)=>{
   res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
