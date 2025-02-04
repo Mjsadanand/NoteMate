@@ -18,7 +18,7 @@ function Home() {
   useEffect(() => {
     fetchSubjects();
   }, []);
-
+ 
   function navigateToLogin() {
     window.location.href = '/login'; 
 }

@@ -182,7 +182,7 @@ function Files({ subject, setSelectedSubject }) {
                 Maximum file size is 10MB. Supported file types is only PDF.
               </p>
             </div>
-          </div>
+          </div> 
         </div>
       </div>
       <div className="notifications-container">
