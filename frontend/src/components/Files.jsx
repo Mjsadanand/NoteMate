@@ -66,7 +66,7 @@ function Files({ subject, setSelectedSubject }) {
         Back
       </button> */}
       <div className="styled-wrapper">
-        <button className="button" onClick={() => setSelectedSubject(null)}>
+        <button className="bn" onClick={() => setSelectedSubject(null)}>
           <div className="button-box">
             <span className="button-elem">
               <svg
