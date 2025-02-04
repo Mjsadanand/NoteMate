@@ -30,14 +30,6 @@ body {
   font-family: "Playwrite GB S", serif;
   margin-bottom: 10px;
 }
-.app-para1{
-  background: linear-gradient(to right, #9887a8, #f40014, #a1ff1e);
-  -webkit-background-clip: text;
-  text-align:center ;
-  -webkit-text-fill-color: transparent;
-  font-family: "Playwrite GB S", serif;
-  margin-bottom: 10px;
-}
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -1010,7 +1002,7 @@ h1 {
  .buttonDownload:after {
   width: 0;
   height: 0;
-  margin-left: 2px;
+  margin-left: 1px;
   margin-top: -7px;
   border-style: solid;
   border-width: 4px 4px 0 4px;
@@ -1106,8 +1098,8 @@ h1 {
   --duration: 3s;
   width: 44px;
   height: 44px;
-  position: relative;
-  /* top: 0;
+  position: fixed;
+  top: 0;
   left: 0;
   right: 0;
   bottom: 0;
@@ -1115,7 +1107,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; */
+  z-index: 1000;
 }
 
 .loader:before {
@@ -1265,4 +1257,135 @@ h1 {
 .loader {
   display: inline-block;
   margin: 0 16px;
+}
+/* For uplaod button */ 
+button {
+  font-family: inherit;
+  font-size: 20px;
+  background: royalblue;
+  color: white;
+  padding: 0.7em 1em;
+  padding-left: 0.9em;
+  display: flex;
+  align-items: center;
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+button span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+}
+
+button svg {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+}
+
+button:hover .svg-wrapper {
+  animation: fly-1 0.6s ease-in-out infinite alternate;
+}
+
+button:hover svg {
+  transform: translateX(1.2em) rotate(45deg) scale(1.1);
+}
+
+button:hover span {
+  transform: translateX(5em);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+@keyframes fly-1 {
+  from {
+    transform: translateY(0.1em);
+  }
+
+  to {
+    transform: translateY(-0.1em);
+  }
+}
+/* back button */ 
+.styled-wrapper .button {
+  display: block;
+  position: relative;
+  width: 76px;
+  height: 76px;
+  margin: 0;
+  overflow: hidden;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  border: 0;
+}
+
+.styled-wrapper .button:before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 7px;
+  border: 3px solid black; /* Update dynamically for light/dark mode */
+  transition:
+    opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.styled-wrapper .button:after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 7px;
+  border: 4px solid #599a53;
+  transform: scale(1.3);
+  transition:
+    opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+.styled-wrapper .button:hover:before,
+.styled-wrapper .button:focus:before {
+  opacity: 0;
+  transform: scale(0.7);
+  transition:
+    opacity 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+    transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.styled-wrapper .button:hover:after,
+.styled-wrapper .button:focus:after {
+  opacity: 1;
+  transform: scale(1);
+  transition:
+    opacity 0.4s cubic-bezier(0.77, 0, 0.175, 1) 80ms,
+    transform 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955) 80ms;
+}
+
+.styled-wrapper .button-box {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.styled-wrapper .button-elem {
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 24px 18px 0 22px;
+  transform: rotate(360deg);
+  fill: #f0eeef;
+}
+
+.styled-wrapper .button:hover .button-box,
+.styled-wrapper .button:focus .button-box {
+  transition: 0.4s;
+  transform: translateX(-69px);
 }

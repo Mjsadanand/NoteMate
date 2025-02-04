@@ -29,7 +29,6 @@ function Home() {
       <img src={Image} alt="Image here" className="img" />
       <button className="button" style={{textAlign:"right",marginRight:"19px"}} onClick={navigateToLogin} >Admin</button></div> 
         <div className="app-para" >A study material sharing platform</div>
-        <div className="app-para1" >Share any subject related notes here..!</div>
       </header>
       <main className="app-content">
         {!selectedSubject ? (
