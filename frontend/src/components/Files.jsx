@@ -81,7 +81,7 @@ function Files({ subject, setSelectedSubject }) {
                 className="file-name"
               >
                 {file.name}
-              </a>
+              </a> <br />
               <button
                 className="buttonDownload"
                 onClick={() => window.open(file.link, "_blank")}
