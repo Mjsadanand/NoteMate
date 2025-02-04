@@ -121,7 +121,7 @@ function Files({ subject, setSelectedSubject }) {
 
           ))
         ) : (
-          <p>No files available.</p>
+          <p>No files? No problem! You can add some soon.</p>
         )}
       </div>
       <div className="file-upload">

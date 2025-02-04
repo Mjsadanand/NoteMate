@@ -188,25 +188,9 @@ h1 {
 }
 
 .files-header {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     color: #2c3e50;
     margin: 30px;
-}
-
-.back-button {
-    background-color: #110d0d;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    margin-left: 35px;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-bottom: 20px;
-}
-
-.back-button:hover {
-    background-color: #c0392b;
 }
 
 .file-upload {
@@ -265,6 +249,9 @@ h1 {
         margin: 10px;
         padding: 10px;
     }
+    .files-header {
+      font-size: 0.9rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1047,13 +1034,14 @@ h1 {
 
  /* From Uiverse.io by kennyotsu */ 
 .notifications-container {
-  width: 320px;
+  width: auto;
   height: auto;
   font-size: 0.875rem;
   line-height: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  align-items: center;
 }
 
 .flex {
@@ -1323,8 +1311,8 @@ h1 {
 .styled-wrapper .bn {
   display: block;
   position: relative;
-  width: 76px;
-  height: 76px;
+  width: 66px;
+  height: 66px;
   margin-left: 30px;
   overflow: hidden;
   outline: none;
@@ -1395,4 +1383,17 @@ h1 {
 .styled-wrapper .bn:focus .button-box {
   transition: 0.4s;
   transform: translateX(-69px);
+}
+
+
+@media (max-width: 480px){
+  .styled-wrapper .bn {
+    width: 30px;
+    height: 30px;
+    margin-left: 30px;
+  }
+  .file-input {
+    font-size: 13px;
+    width: 150px;
+  }
 }
