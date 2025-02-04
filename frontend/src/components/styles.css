@@ -747,6 +747,10 @@ h1 {
       height: 29%;
       align-items: center;
     }
+    .styled-wrapper .bn{
+      width: 36px;
+      height: 36px;
+    }
 }
 .flex {
   display: flex;
@@ -1321,7 +1325,7 @@ h1 {
   position: relative;
   width: 76px;
   height: 76px;
-  margin: 0;
+  margin-left: 20px;
   overflow: hidden;
   outline: none;
   background-color: transparent;

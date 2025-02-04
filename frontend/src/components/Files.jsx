@@ -113,7 +113,7 @@ function Files({ subject, setSelectedSubject }) {
               >
                 {file.name}
               </a> <br />
-              <button
+              <button style={{backgroundColor: "transparent"}}
                 className="buttonDownload"
                 onClick={() => window.open(file.link, "_blank")}
               >
@@ -151,7 +151,7 @@ function Files({ subject, setSelectedSubject }) {
               </svg>
             </div>
           </div>
-          <span>Upload</span>
+          <span></span>
         </button>
 
       </div>
