@@ -49,7 +49,6 @@ function Files({ subject, setSelectedSubject }) {
 
       const updatedSubject = await response.json();
       setFiles(updatedSubject.subject.files || []);
-      alert("File uploaded successfully!");
     } catch (error) {
       console.error("Error uploading file:", error.message);
       alert(error.message);
@@ -113,7 +112,7 @@ function Files({ subject, setSelectedSubject }) {
               >
                 {file.name}
               </a> <br />
-              <button style={{backgroundColor: "transparent"}}
+              <button style={{backgroundColor: "transparent",color: "black"}}
                 className="buttonDownload"
                 onClick={() => window.open(file.link, "_blank")}
               >
@@ -151,7 +150,7 @@ function Files({ subject, setSelectedSubject }) {
               </svg>
             </div>
           </div>
-          <span></span>
+          <span>Send</span>
         </button>
 
       </div>
