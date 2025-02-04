@@ -86,7 +86,6 @@ function Files({ subject, setSelectedSubject }) {
                 className="buttonDownload"
                 onClick={() => window.open(file.link, "_blank")}
               >
-                Open
               </button>
             </div>
 

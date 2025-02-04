@@ -143,8 +143,10 @@ h1 {
     color: #110d0d;
 }
 .file-icon {
-  width: 30px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
+  display: block;
+  margin: 0 auto;
 }
 
 .files-list button {
