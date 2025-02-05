@@ -1267,6 +1267,7 @@ h1 {
   cursor: pointer;
   border: none;
   background: #fff;
+  margin-left: 20px;
  }
  
  .but  > svg {
@@ -1282,7 +1283,7 @@ h1 {
  }
  
  .but :hover {
-  box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff;
+  /* box-shadow: 9px 9px 33px #d1d1d1, -9px -9px 33px #ffffff; */
   transform: translateY(-2px);
  }
 
