@@ -84,7 +84,8 @@ function Files({ subject, setSelectedSubject }) {
                 rel="noopener noreferrer"
                 className="file-name"
               >
-                {file.name}
+                {/* {file.name} */}
+                {file.name.split('.').slice(0, -1).join('.')}
               </a> <br />
               <button style={{ backgroundColor: "transparent", color: "black" }}
                 className="buttonDownload"
