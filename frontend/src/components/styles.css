@@ -93,6 +93,10 @@ h1 {
     margin: 10px;
 }
 
+.subjects-grid:hover> :not(:hover) {
+  filter: blur(4px);
+    opacity: 0.5;
+}
 .subject-card {
     display: flex;
     flex-direction: column;

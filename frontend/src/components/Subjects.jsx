@@ -17,7 +17,7 @@ function Subjects({ subjects, setSelectedSubject }) {
     });
     setNewSubject("");
     // eslint-disable-next-line no-undef
-    fetchSubjects();  
+    fetchSubjects();   
   };
 
   const filteredSubjects = subjects.filter((subject) =>
