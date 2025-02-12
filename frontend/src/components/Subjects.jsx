@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
+import subjectImage from "../images/subject.png";
 
 function Subjects({ subjects, setSelectedSubject }) {
   const [newSubject, setNewSubject] = useState("");
@@ -49,6 +50,8 @@ function Subjects({ subjects, setSelectedSubject }) {
             className="subject-card"
             onClick={() => setSelectedSubject(subject)}
           >
+            {/* <img src={`https://via.placeholder.com/150?text=${subject.name}`} alt={subject.name} className="subject-image" /> */}
+            <img src={subjectImage} alt={subject.name}/>
             <h3>{subject.name}</h3>
           </div>
         ))}
