@@ -94,7 +94,7 @@ h1 {
 }
 
 .subjects-grid:hover> :not(:hover) {
-  filter: blur(4px);
+  filter: blur(1px);
     opacity: 0.5;
 }
 .subject-card {
