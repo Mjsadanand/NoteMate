@@ -268,6 +268,12 @@ h1 {
     .file-upload{
       margin-bottom: 20px;
     }
+    .subject-card img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      margin-bottom: 8px;
+    }
 }
 
 /* From Uiverse.io by 3bdel3ziz-T */ 

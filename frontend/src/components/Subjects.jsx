@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
-import subjectImage from "../images/subject.png";
+import subjectImage from "../assets/Subject.png";
 
 function Subjects({ subjects, setSelectedSubject }) {
   const [newSubject, setNewSubject] = useState("");
