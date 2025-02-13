@@ -11,7 +11,7 @@ body {
 
 .app-title{
   margin-top: 8px;
-  background: linear-gradient(to right, #8A2BE2, #FF1493, #1E90FF);
+  /* background: linear-gradient(to right, #8A2BE2, #FF1493, #1E90FF); */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Playwrite GB S", serif;

@@ -25,7 +25,7 @@ function Home() {
   return (
     <div className="app-container">
       <header className="app-header">
-      <div className="flex"> <h1 className="app-title" >Notemate</h1> 
+      <div className="flex"> <h1 className="app-title" style={{color:"yellow"}}>Note<h1 className="app-title" style={{color:"blue"}}>mate</h1></h1> 
       <img src={Image} alt="Image here" onClick={() => window.location.href = 'https://learn.kletech.ac.in/login'} className="img" />
       <button className="button" style={{textAlign:"right",marginRight:"19px"}} onClick={navigateToLogin} >Admin</button></div> 
         <div className="app-para" >A study material sharing platform</div>
