@@ -77,7 +77,7 @@ function Files({ subject, setSelectedSubject }) {
                 src={image}
                 alt="File Icon"
                 className="file-icon"
-              />
+              /> 
               <a
                 href={file.link}
                 target="_blank"
