@@ -144,6 +144,7 @@ function Files({ subject, setSelectedSubject }) {
             </svg>
           </div></div>
       )}
+      <br /> <br />
       <div className="notifications-container">
         <div className="info">
           <div className="flex">
