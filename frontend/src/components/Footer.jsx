@@ -27,7 +27,7 @@ function Footer() {
 
             </div>
             <p className="footer-text">
-                &copy; 2024 Notemate | All Rights Reserved
+                &copy; 2025 Notemate | All Rights Reserved
             </p>
 
         </footer>
