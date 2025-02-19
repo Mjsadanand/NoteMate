@@ -34,7 +34,7 @@ function Files({ subject, setSelectedSubject }) {
     const formData = new FormData();
     formData.append("file", fileInput);
 
-    setIsLoading(true);
+    setIsLoading(true); 
 
     try {
       const response = await fetch(
