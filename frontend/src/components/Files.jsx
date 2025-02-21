@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./styles.css";
 import image from "../assets/sample1.png";
 
-function Files({ subject, setSelectedSubject }) {
+function Files({ subject, setSelectedSubject }) { 
   const [files, setFiles] = useState([]);
   const [fileInput, setFileInput] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
