@@ -47,6 +47,7 @@ h1 {
   width: 22%;
   height: 15%;
   align-items: center;
+  cursor: pointer;
 }
 /* Add Subject Form */
 .add-subject {
