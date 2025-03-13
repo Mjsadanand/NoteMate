@@ -11,7 +11,7 @@ export const initializeAdmin = async () => {
       const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, salt);
       
       const admin = new Admin({
-        username: 'admin',
+        username: process.env.ADMIN,
         password: hashedPassword
       });
       
