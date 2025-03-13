@@ -1,13 +1,14 @@
 import bcrypt from 'bcryptjs';
 import Admin from '../models/Admin.js';
+import { config } from "dotenv";
 
 export const initializeAdmin = async () => {
   try {
-    const adminExists = await Admin.findOne({ username: 'admin' });
+    const adminExists = await Admin.findOne({ username: process.env.ADMIN });
     
     if (!adminExists) {
       const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash('admin123', salt);
+      const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD, salt);
       
       const admin = new Admin({
         username: 'admin',
