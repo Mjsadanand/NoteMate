@@ -5,6 +5,7 @@ import './styles.css'
 function Admin({ fetchSubjects }) {
     const [newSubject, setNewSubject] = useState("");
     const [subjectsInfo, setSubjectsInfo] = useState(null);
+    const [totalNotes, setTotalNotes] = useState(0);
 
     const createSubject = async () => {
         if (!newSubject.trim()) return alert("Subject name is required.");
@@ -26,6 +27,9 @@ function Admin({ fetchSubjects }) {
             }
             const data = await response.json();
             setSubjectsInfo(data);
+
+            const totalNotesCount = data.subjects.reduce((total, subject) => total + subject.notesCount, 0);
+            setTotalNotes(totalNotesCount);
         } catch (error) {
             console.error("Error fetching subjects info:", error.message);
         }
@@ -54,6 +58,7 @@ function Admin({ fetchSubjects }) {
                 {subjectsInfo ? (
                     <div>
                         <h2 className="analytics-header">Total Subjects: {subjectsInfo.totalSubjects}</h2>
+                        <h3 className="analytics-header">Grand Total of Notes: {totalNotes}</h3>
                         <table className="subjects-table">
                             <thead>
                                 <tr>

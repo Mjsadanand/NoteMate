@@ -85,8 +85,8 @@ app.post("/api/subjects/:subjectId/files", upload.single("file"), async (req, re
     // Store file metadata in the database
     const fileMetadata = {
       name: req.file.originalname,
-      link: uploadResult.secure_url, // Correct Cloudinary URL
-      fileId: uploadResult.public_id, // Unique Cloudinary ID for the file
+      link: uploadResult.secure_url, 
+      fileId: uploadResult.public_id, 
     };
 
     // Find subject and update it with the uploaded file
