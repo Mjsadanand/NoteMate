@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import multer from "multer";
 import { v2 as cloudinary } from "cloudinary";
-import { config } from "dotenv";
+import { config } from "dotenv"; 
 import connectDB from "./db/db.js";
 import subjectRoutes from "./routes/subjects.js";
 import authRoutes from "./routes/authRoutes.js";
