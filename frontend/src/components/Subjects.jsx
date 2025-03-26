@@ -37,10 +37,10 @@ function Subjects({ subjects, setSelectedSubject }) {
       <div>
         <div className="resource-link">
           <span className="blinking-text" style={{ animation: "blinking 1.5s infinite" }}>New!</span>
-          <span className="resource-title">Check out our latest resource</span>
+          <span className="resource-title">Resource for all Placement Drive</span>
           <button
             className="visit-button"
-            onClick={() => window.open("https://example.com/resource", "_blank")}
+            onClick={() => window.open("https://drive.google.com/drive/folders/1Fqr4QWLOkQm_XXRIXnmCfudfg5R5Q3uU", "_blank")}
           >
             Visit
           </button>

@@ -1289,7 +1289,7 @@ h1 {
 }
 
 .resource-title {
-  font-size: 1.2em;
+  font-size: 1em;
   color: #333;
   flex-grow: 1;
 }
@@ -1298,8 +1298,8 @@ h1 {
   background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
+  padding: 8px 12px;
+  border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s, transform 0.2s;
