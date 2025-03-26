@@ -1265,36 +1265,55 @@ h1 {
 .butt:active {
   transform: scale(0.95);
 }
-/* Styles for the resource title */
-.resource-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #2c3e50;
-  margin-right: 10px;
-  display: inline-block;
+.resource-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #f4f4f9;
+  border-radius: 10px;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
 }
 
-/* Styles for the visit button */
+.blinking-text {
+  color: #ff4b2b;
+  font-weight: bold;
+  font-size: 1.1em;
+  animation: blinking 1.5s infinite;
+}
+
+@keyframes blinking {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.resource-title {
+  font-size: 1.2em;
+  color: #333;
+  flex-grow: 1;
+}
+
 .visit-button {
-  background-color: #3498db;
+  background-color: #007bff;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 8px 16px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .visit-button:hover {
-  background-color: #2980b9;
-  transform: scale(1.05);
+  background-color: #0056b3;
+  transform: translateY(-2px);
 }
 
 .visit-button:active {
-  background-color: #1f6391;
-  transform: scale(0.95);
+  transform: translateY(0);
 }
+
 
 @keyframes fly-1 {
   from {
