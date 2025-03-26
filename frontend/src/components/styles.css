@@ -1265,6 +1265,36 @@ h1 {
 .butt:active {
   transform: scale(0.95);
 }
+/* Styles for the resource title */
+.resource-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+/* Styles for the visit button */
+.visit-button {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.visit-button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+.visit-button:active {
+  background-color: #1f6391;
+  transform: scale(0.95);
+}
 
 @keyframes fly-1 {
   from {

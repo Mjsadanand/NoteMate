@@ -36,7 +36,7 @@ function Subjects({ subjects, setSelectedSubject }) {
       </div>
       <div>
         <div className="resource-link">
-          <span className="blinking-text">New!</span>
+          <span className="blinking-text" style={{ animation: "blinking 1.5s infinite" }}>New!</span>
           <span className="resource-title">Check out our latest resource</span>
           <button
             className="visit-button"
