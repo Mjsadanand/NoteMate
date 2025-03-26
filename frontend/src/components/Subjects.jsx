@@ -34,6 +34,18 @@ function Subjects({ subjects, setSelectedSubject }) {
           placeholder="Search subjects..."
         />
       </div>
+      <div>
+        <div className="resource-link">
+          <span className="blinking-text">New!</span>
+          <span className="resource-title">Check out our latest resource</span>
+          <button
+            className="visit-button"
+            onClick={() => window.open("https://example.com/resource", "_blank")}
+          >
+            Visit
+          </button>
+        </div>
+      </div>
       {/* <div className="add-subject"> 
         <input
           type="text"
