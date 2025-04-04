@@ -1224,15 +1224,15 @@ h1 {
 /* For uplaod button */ 
 .butt {
   font-family: inherit;
-  font-size: 15px;
-  background: royalblue;
-  color: white;
+  font-size: 12px;
+  /* background: royalblue; */
+  color: royalblue;
   padding: 0.7em 1em;
   padding-left: 0.9em;
   display: flex;
   align-items: center;
   border: none;
-  border-radius: 16px;
+  /* border-radius: 16px; */
   overflow: hidden;
   transition: all 0.2s;
   cursor: pointer;
@@ -1271,7 +1271,7 @@ h1 {
   gap: 10px;
   border-radius: 10px;
   padding: 10px 20px;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); */
   margin: 20px 40px;
 }
 
