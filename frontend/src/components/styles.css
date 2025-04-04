@@ -1225,14 +1225,14 @@ h1 {
 .butt {
   font-family: inherit;
   font-size: 12px;
-  /* background: royalblue; */
-  color: royalblue;
+  background: royalblue;
+  color: white;
   padding: 0.7em 1em;
   padding-left: 0.9em;
   display: flex;
   align-items: center;
   border: none;
-  /* border-radius: 16px; */
+  border-radius: 16px;
   overflow: hidden;
   transition: all 0.2s;
   cursor: pointer;
@@ -1268,11 +1268,11 @@ h1 {
 .resource-link {
   display: flex;
   align-items: center;
-  gap: 10px;
+  /* gap: 10px; */
   border-radius: 10px;
   padding: 10px 20px;
   /* box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1); */
-  margin: 20px 40px;
+  margin: 20px 20px;
 }
 
 .blinking-text {
@@ -1294,18 +1294,18 @@ h1 {
 }
 
 .visit-button {
-  background-color: #007bff;
-  color: #fff;
+  /* background-color: #007bff; */
+  color: #007bff;
   border: none;
   padding: 8px 12px;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.3s, transform 0.2s;
 }
 
 .visit-button:hover {
-  background-color: #0056b3;
+  background-color: red;
   transform: translateY(-2px);
 }
 
