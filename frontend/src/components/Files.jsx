@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
-import image from "../assets/sample1.png";
+// import image from "../assets/sample1.png";
+import Card from "./Card.jsx";
 
 function Files({ subject, setSelectedSubject }) { 
   const [files, setFiles] = useState([]);
@@ -73,11 +74,11 @@ function Files({ subject, setSelectedSubject }) {
         {files.length > 0 ? (
           files.map((file) => (
             <div key={file.fileId} className="file-card">
-              <img
+              {/* <img
                 src={image}
                 alt="File Icon"
                 className="file-icon"
-              /> 
+              />  */}<Card/>
               <a
                 href={file.link}
                 target="_blank"
