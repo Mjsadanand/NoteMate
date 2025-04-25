@@ -1,9 +1,10 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
-import Card from "./Card.jsx";
+import subjectImage from "../assets/Subject.png";
 
-function Subjects({ subjects, setSelectedSubject, fetchSubjects }) {
+
+function Subjects({ subjects, setSelectedSubject }) {
   const [newSubject, setNewSubject] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -16,7 +17,8 @@ function Subjects({ subjects, setSelectedSubject, fetchSubjects }) {
       body: JSON.stringify({ name: newSubject }),
     });
     setNewSubject("");
-    fetchSubjects(); // Refresh subjects
+    // eslint-disable-next-line no-undef
+    fetchSubjects();   
   };
 
   const filteredSubjects = subjects.filter((subject) =>
@@ -24,51 +26,47 @@ function Subjects({ subjects, setSelectedSubject, fetchSubjects }) {
   );
 
   return (
-    <div className="subjects-container p-6">
-      <div className="search-bar mb-4">
+    <div className="subjects-container">
+      <div className="search-bar">
         <input
           type="text"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
           placeholder="Search subjects..."
-          className="w-full p-2 border rounded-md"
         />
       </div>
-
-      <div className="resource-link mb-6 bg-yellow-100 p-4 rounded-lg flex items-center justify-between">
-        <div>
-          <span className="blinking-text font-bold text-red-600 mr-2" style={{ animation: "blinking 1.5s infinite" }}>New!</span>
-          <span className="resource-title font-semibold">Resource for all Placement Drive</span>
+      <div>
+        <div className="resource-link">
+          <span className="blinking-text" style={{ animation: "blinking 1.5s infinite" }}>New!</span>
+          <span className="resource-title">Resource for all Placement Drive</span>
+          <button
+            className="visit-button"
+            onClick={() => window.open("https://drive.google.com/drive/folders/1Fqr4QWLOkQm_XXRIXnmCfudfg5R5Q3uU", "_blank")}
+          >
+            Visit
+          </button>
         </div>
-        <button
-          className="visit-button bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded"
-          onClick={() => window.open("https://drive.google.com/drive/folders/1Fqr4QWLOkQm_XXRIXnmCfudfg5R5Q3uU", "_blank")}
-        >
-          Visit
-        </button>
       </div>
-
-      {/* Uncomment below if needed:
-      <div className="add-subject mb-6">
+      {/* <div className="add-subject"> 
         <input
           type="text"
           value={newSubject}
           onChange={(e) => setNewSubject(e.target.value)}
           placeholder="Enter subject name"
-          className="p-2 border rounded-md mr-2"
         />
-        <button onClick={createSubject} className="bg-blue-600 text-white px-4 py-2 rounded">Create Subject</button>
-      </div> 
-      */}
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-4 place-items-center">
+        <button onClick={createSubject}>Create Subject</button>
+      </div> */}
+      <div className="subjects-grid">
         {filteredSubjects.map((subject) => (
           <div
             key={subject._id}
-            className="subject-card text-center cursor-pointer"
+            className="subject-card"
             onClick={() => setSelectedSubject(subject)}
           >
-            <Card title={subject.name} />
+            {/* <img src={`https://via.placeholder.com/150?text=${subject.name}`} alt={subject.name} className="subject-image" /> */}
+            {/* <Card/> */}
+            <img src={subjectImage} alt={subject.name} className="subject-image" />
+            <h3>{subject.name}</h3>
           </div>
         ))}
       </div>
@@ -76,7 +74,7 @@ function Subjects({ subjects, setSelectedSubject, fetchSubjects }) {
   );
 }
 
-// Prop types validation
+// Add PropTypes
 Subjects.propTypes = {
   subjects: PropTypes.arrayOf(
     PropTypes.shape({
