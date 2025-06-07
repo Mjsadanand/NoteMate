@@ -36,7 +36,15 @@ function Subjects({ subjects, setSelectedSubject }) {
         />
       </div>
       <div>
-        <div className="resource-link">
+        <div
+          className="resource-link marquee"
+          tabIndex={0}
+          onMouseEnter={e => e.currentTarget.classList.add("paused")}
+          onMouseLeave={e => e.currentTarget.classList.remove("paused")}
+          onFocus={e => e.currentTarget.classList.add("paused")}
+          onBlur={e => e.currentTarget.classList.remove("paused")}
+          style={{ overflow: "hidden", whiteSpace: "nowrap", cursor: "pointer" }}
+        >
           <span className="blinking-text" style={{ animation: "blinking 1.5s infinite" }}>New! </span> &nbsp;
           <span className="resource-title">Resource for all Placement Drive</span>
           <button
