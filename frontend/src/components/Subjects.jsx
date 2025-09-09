@@ -2,9 +2,11 @@ import { useState } from "react";
 import PropTypes from "prop-types";
 import "./styles.css";
 import subjectImage from "../assets/Subject.png";
+import { useNavigate } from "react-router-dom";
 
 
-function Subjects({ subjects, setSelectedSubject }) {
+function Subjects({ subjects }) {
+  const navigate = useNavigate();
   const [newSubject, setNewSubject] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
@@ -69,7 +71,7 @@ function Subjects({ subjects, setSelectedSubject }) {
           <div
             key={subject._id}
             className="subject-card"
-            onClick={() => setSelectedSubject(subject)}
+            onClick={() => navigate(`/${subject.name.toLowerCase().replace(/\s+/g, '-')}`)}
           >
             {/* <img src={`https://via.placeholder.com/150?text=${subject.name}`} alt={subject.name} className="subject-image" /> */}
             {/* <Card/> */}
@@ -90,8 +92,6 @@ Subjects.propTypes = {
       name: PropTypes.string.isRequired,
     })
   ).isRequired,
-  setSelectedSubject: PropTypes.func.isRequired,
-  fetchSubjects: PropTypes.func.isRequired,
 };
 
 export default Subjects;

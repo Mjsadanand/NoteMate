@@ -1,27 +1,14 @@
-import { useState, useEffect } from "react";
 import "./styles.css";
 import Subjects from "./Subjects.jsx";
-import Files from "./Files.jsx"; 
 import Footer from "./Footer.jsx";
 import Image from "../assets/image.png";
+import PropTypes from "prop-types";
 
-function Home() {
-  const [subjects, setSubjects] = useState([]);
-  const [selectedSubject, setSelectedSubject] = useState(null);
-
-  const fetchSubjects = async () => {
-    const response = await fetch("https://notemate-mnyf.onrender.com/api/subjects");
-    const data = await response.json();
-    setSubjects(data);
-  };
-
-  useEffect(() => {
-    fetchSubjects();
-  }, []);
- 
+function Home({ subjects }) {
   function navigateToLogin() {
-    window.location.href = '/login'; 
-}
+    window.location.href = '/login';
+  }
+
   return (
     <div className="app-container">
       <header className="app-header">
@@ -31,19 +18,20 @@ function Home() {
         <div className="app-para" >A study material sharing platform</div>
       </header>
       <main className="app-content">
-        {!selectedSubject ? (
-          <Subjects
-            subjects={subjects}
-            setSelectedSubject={setSelectedSubject}
-            fetchSubjects={fetchSubjects}
-          />
-        ) : (
-          <Files subject={selectedSubject} setSelectedSubject={setSelectedSubject} />
-        )}
+        <Subjects subjects={subjects} />
       </main>
         <Footer/>
     </div>
   );
 }
+
+Home.propTypes = {
+  subjects: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+};
 
 export default Home;
